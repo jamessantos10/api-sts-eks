@@ -27,6 +27,28 @@ go build
 ./api-sts-eks
 
 A API estará disponível na porta 8080.
+```
 
+## Uso
 
+Para utilizar a API, envie um POST para a rota /up com o JSON especificado:
 
+```
+curl -X POST http://localhost:8080/up -H "Content-Type: application/json" -d '{"power": true, "idaccount": "123456789012"}'
+```
+
+Essa rota é responsável por executar um kubectl no deployment do kubedownscaler alterando o horário de disponibilidade do Cluster e escalando novamente os deployments e statefullsets.
+
+# Detalhes Técnicos
+
+## Conexão STS
+A API utiliza o AWS STS (Security Token Service) para criar uma conexão temporária com a conta de destino, baseada no idaccount fornecido. Certifique-se de que as permissões necessárias estão configuradas para permitir a operação.
+
+## Geração do .kubeconfig
+Após estabelecer a conexão STS, a API cria um client para o cluster Kubernetes associado à conta de destino. O arquivo .kubeconfig é gerado para permitir a execução de comandos kubectl.
+
+## Execução do kubectl
+Com o .kubeconfig gerado, a API pode executar comandos kubectl para interagir com o cluster e ligar os serviços.
+
+Contribuição
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.

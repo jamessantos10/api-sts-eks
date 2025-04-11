@@ -1,7 +1,7 @@
 package router
 
 import (
-	"techstack-catalog-downscaler/api/src/router/rotas"
+	"api-sts-eks/api/src/router/rotas"
 
 	"github.com/gorilla/mux"
 )

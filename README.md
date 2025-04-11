@@ -8,14 +8,25 @@ Ela funciona em conjunto com o [kube-downscaler](https://codeberg.org/hjacobs/ku
 Desta forma conseguimos diminuir custos com os nodes.
 
 ## Pré-requisitos
-- Lista de pré-requisitos necessários para usar a API (ex: Node.js, Python, etc.)
-- Como instalar dependências
+- Kubernetes configurado e acessível.
+- Ferramentas necessárias instaladas:
+  - `kubectl`
+  - Configuração de acesso ao cluster Kubernetes.
+- Node.js.
 
 ## Instalação
-Passos para clonar o repositório e instalar as dependências.
+Clone o repositório e instale as dependências necessárias.
 
 ```bash
 git clone https://github.com/jamessantos10/api-sts-eks.git
 cd api-sts-eks
-# Comando para instalar dependências, por exemplo:
-npm install
+
+Certifique-se de ter o Go instalado em sua máquina. Em seguida, execute:
+
+go build
+./api-sts-eks
+
+A API estará disponível na porta 8080.
+
+
+

@@ -3,7 +3,7 @@
 ## Visão Geral
 Esta API foi desenvolvida para gerenciar recursos Kubernetes, permitindo realizar operações de **scale up** em **Deployments** e **StatefulSets**.
 
-Ela funciona em conjunto com o [kube-downscaler](https://codeberg.org/hjacobs/kube-downscaler), automatizando o processo de zerar os recursos fora do horário comercial e permitindo que usuários escalem manualmente os recursos quando necessário usando essa API desenvolvida.
+Ela funciona em conjunto com o [kube-downscaler](https://codeberg.org/hjacobs/kube-downscaler), automatizando o processo de zerar os recursos fora do horário comercial e permitindo que usuários escalem manualmente os recursos quando necessário usando essa API.
 
 Desta forma conseguimos diminuir custos com os nodes.
 

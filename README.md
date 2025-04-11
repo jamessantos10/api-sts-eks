@@ -39,6 +39,26 @@ curl -X POST http://localhost:8080/up -H "Content-Type: application/json" -d '{"
 
 Essa rota é responsável por executar um kubectl no deployment do kubedownscaler alterando o horário de disponibilidade do Cluster e escalando novamente os deployments e statefullsets.
 
+# Observação
+
+Essa aplicação está usando AssumeRole, para testar 100% de forma local, é necessário usar credencias locais para testes. Por padrão, o método AssumeRole é utilizado para criar credenciais com a conta de destino. Para usar credenciais locais, substitua o trecho de código abaixo [client]([https://codeberg.org/hjacobs/kube-downscaler](https://github.com/jamessantos10/api-sts-eks/blob/main/api/src/controllers/sts.go#L26)):
+
+```
+// Criar credenciais com a conta de destino, usando o método AssumeRole
+creds := stscreds.NewCredentials(sess, "", func(p *stscreds.AssumeRoleProvider) {
+    p.RoleARN = *aws.String(role)
+    p.RoleSessionName = *aws.String("600")
+})
+```
+
+Alteração para Credenciais Locais:
+
+```
+// Usar credenciais locais para testes
+creds := sess.Config.Credentials
+```
+
+
 # Detalhes Técnicos
 
 ## Conexão STS

@@ -2,7 +2,7 @@ package rotas
 
 import (
 	"net/http"
-	"techstack-catalog-downscaler/api/src/controllers"
+	"api-sts-eks/api/src/controllers"
 )
 
 // Rotas expostas

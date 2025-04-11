@@ -60,14 +60,15 @@ func assumerolests(Idaccount string) {
 		Spec: batchv1.JobSpec{
 			Template: v1.PodTemplateSpec{
 				Spec: v1.PodSpec{
-					ServiceAccountName: "kube",
+					ServiceAccountName: "kube-downscaler",
 					Containers: []v1.Container{
 						{
-							Name:  "kube",
+							Name:  "downscaler",
 							Image: "bitnami/kubectl:1.27",
 							Command: []string{
 								"sh",
 								"-c",
+								"kubectl patch deployment kube-downscaler -n teste-system --type='json'  -p='[{\"op\": \"replace\", \"path\": \"/spec/template/spec/containers/0/env\", \"value\": [{\"name\": \"DEFAULT_UPTIME\",\"value\": \"Mon-Fri 08:00-21:00 America/Sao_Paulo\"}]}]' ",
 							},
 						},
 					},
